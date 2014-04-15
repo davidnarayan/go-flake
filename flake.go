@@ -1,11 +1,11 @@
-// Flake generates k-ordered IDs with the following characteristics:
-// - ID is a 64-bit integer (returned as a 16-character hex string)
-// - 41 bits is the timestamp with millisecond precision
-// - 15 bits is the host id (uses IP modulo 2^15)
-// -  8 bits is an auto-incrementing sequence for ID requests within the same
-//      millisecond
+// Flake generates unique identifiers that are roughly sortable by time. Flake can
+// run on a cluster of machines and still generate unique IDs without requiring
+// worker coordination.
 //
-// Worker coordination is not required to generate unique IDs.
+// A Flake ID is a 64-bit integer will the following components:
+//  - 41 bits is the timestamp with millisecond precision
+//  - 10 bits is the host id (uses IP modulo 2^10)
+//  - 13 bits is an auto-incrementing sequence for ID requests within the same millisecond
 //
 // Note: In order to make a millisecond timestamp fit within 41 bits, a custom
 // epoch of Jan 1, 2014 00:00:00 is used.
