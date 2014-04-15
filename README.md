@@ -1,9 +1,10 @@
-flake
+go-flake
 =====
 
-Flake generates unique identifiers that are roughly sortable by time. Flake can
-run on a cluster of machines and still generate unique IDs without requiring
-worker coordination.
+go-flake generates unique identifiers that are roughly sortable by time. 
+
+Flake can run on a cluster of machines and still generate unique IDs without 
+requiring worker coordination.
 
 A Flake ID is a 64-bit integer will the following components:
   - 41 bits is the timestamp with millisecond precision
