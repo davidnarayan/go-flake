@@ -11,6 +11,13 @@ A Flake ID is a 64-bit integer will the following components:
   - 10 bits is the host id (uses IP modulo 2^10)
   - 13 bits is an auto-incrementing sequence for ID requests within the same millisecond
 
+Installation
+------------
+
+```
+go get github.com/davidnarayan/go-flake
+```
+
 
 Example
 -------
