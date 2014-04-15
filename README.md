@@ -14,7 +14,7 @@ A Flake ID is a 64-bit integer will the following components:
 Example
 -------
 
-`go
+```go
 package main
 
 import (
@@ -33,4 +33,13 @@ func main() {
 	fmt.Println(id)
 	fmt.Println(id.String())
 }
-`
+```
+
+
+Credit
+------
+
+This work is based on code and concepts from the following:
+
+  - https://blog.twitter.com/2010/announcing-snowflake
+  - http://instagram-engineering.tumblr.com/post/10853187575/sharding-ids-at-instagram
