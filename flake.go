@@ -43,6 +43,11 @@ func (id *Id) String() string {
 	return strconv.FormatUint(uint64(*id), 16)
 }
 
+// Uint64 formats the Id as an unsigned integer
+func (id *Id) Uint64() uint64 {
+	return uint64(*id)
+}
+
 // Flake is a unique Id generator
 type Flake struct {
 	prevTime uint64
