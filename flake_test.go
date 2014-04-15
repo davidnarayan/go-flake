@@ -21,6 +21,19 @@ func TestNewFlake(t *testing.T) {
 	}
 
 	if !sort.StringsAreSorted(ids) {
-		t.Errorf("IDs are not k-sorted!")
+		t.Errorf("IDs are not sorted!")
+	}
+}
+
+func BenchmarkNextId(b *testing.B) {
+
+	f, err := New()
+
+	if err != nil {
+		b.Fatalf("Unable to create new ID generator: %s", err)
+	}
+
+	for i := 0; i < b.N; i++ {
+		_ = f.NextId()
 	}
 }
