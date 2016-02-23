@@ -125,6 +125,10 @@ func getHostId() (uint64, error) {
 	}
 
 	a := addrs[0].To4()
+	if a == nil {
+		a = addrs[0].To16()
+	}
+
 	ip := uint64((a[0] * 1 << 24) + (a[1] * 1 << 16) + (a[2] * 1 << 8) + a[3])
 
 	return ip % MaxHostId, nil
