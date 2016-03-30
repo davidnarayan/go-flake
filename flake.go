@@ -13,6 +13,7 @@
 package flake
 
 import (
+	"errors"
 	"net"
 	"os"
 	"strconv"
@@ -119,13 +120,12 @@ func getHostId() (uint64, error) {
 	}
 
 	addrs, err := net.LookupIP(h)
-
-	if err != nil {
-		return 0, err
+	a := addrs[0]
+	startPos := len(a) - 4
+	if startPos < 0 {
+		return 0, errors.New("invalid local IP address " + a.String())
 	}
-
-	a := addrs[0].To4()
-	ip := uint64((a[0] * 1 << 24) + (a[1] * 1 << 16) + (a[2] * 1 << 8) + a[3])
+	ip := (uint64(a[startPos]) << 24) + (uint64(a[startPos+1]) << 16) + (uint64(a[startPos+2]) << 8) + uint64(a[startPos+3])
 
 	return ip % MaxHostId, nil
 }
