@@ -5,17 +5,22 @@ import (
 	"testing"
 )
 
-func TestNewFlake(t *testing.T) {
-	f, err := New()
+func CreateNewFlake(t *testing.T) Flaker {
+	flake, err := NewFlake()
 
 	if err != nil {
-		t.Errorf("Unable to create new ID generator: %s", err)
+		t.Errorf("Unable to create new Flake: %s", err)
 	}
+	return flake
+}
+
+func TestNewFlake(t *testing.T) {
+	f := CreateNewFlake(t)
 
 	var ids []string
 
 	for i := 0; i < 4; i++ {
-		id := f.NextId()
+		id := f.NextID()
 
 		ids = append(ids, id.String())
 	}
@@ -27,13 +32,13 @@ func TestNewFlake(t *testing.T) {
 
 func BenchmarkNextId(b *testing.B) {
 
-	f, err := New()
+	f, err := NewFlake()
 
 	if err != nil {
-		b.Fatalf("Unable to create new ID generator: %s", err)
+		b.Fatalf("Unable to create new Flake: %s", err)
 	}
 
 	for i := 0; i < b.N; i++ {
-		_ = f.NextId()
+		_ = f.NextID()
 	}
 }
