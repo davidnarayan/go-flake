@@ -54,8 +54,8 @@ type Flake struct {
 	mu       sync.Mutex
 }
 
-// NextID returns a new ID from the generator
-func (f *Flake) NextID() ID {
+// NextId returns a new ID from the generator
+func (f *Flake) NextId() ID {
 	f.mu.Lock()
 	defer f.mu.Unlock()
 

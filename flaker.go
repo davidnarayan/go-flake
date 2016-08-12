@@ -8,11 +8,11 @@ import (
 
 // Flaker interface to make it abstract
 type Flaker interface {
-	NextID() ID
+	NextId() ID
 }
 
-// NewFlake returns a new Flake instance and a possible error condition
-func NewFlake() (*Flake, error) {
+// New returns a new Flake instance and a possible error condition
+func New() (*Flake, error) {
 	HostID, err := getHostID()
 
 	if err != nil {

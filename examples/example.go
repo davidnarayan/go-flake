@@ -3,8 +3,9 @@ package main
 import (
 	"flag"
 	"fmt"
-	"github.com/davidnarayan/go-flake"
 	"log"
+
+	flake "github.com/davidnarayan/go-flake"
 )
 
 var max = flag.Int("max", 1, "number of IDs to create")

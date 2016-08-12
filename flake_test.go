@@ -6,7 +6,7 @@ import (
 )
 
 func CreateNewFlake(t *testing.T) Flaker {
-	flake, err := NewFlake()
+	flake, err := New()
 
 	if err != nil {
 		t.Errorf("Unable to create new Flake: %s", err)
@@ -20,7 +20,7 @@ func TestNewFlake(t *testing.T) {
 	var ids []string
 
 	for i := 0; i < 4; i++ {
-		id := f.NextID()
+		id := f.NextId()
 
 		ids = append(ids, id.String())
 	}
@@ -32,13 +32,13 @@ func TestNewFlake(t *testing.T) {
 
 func BenchmarkNextId(b *testing.B) {
 
-	f, err := NewFlake()
+	f, err := New()
 
 	if err != nil {
 		b.Fatalf("Unable to create new Flake: %s", err)
 	}
 
 	for i := 0; i < b.N; i++ {
-		_ = f.NextID()
+		_ = f.NextId()
 	}
 }
