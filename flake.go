@@ -120,6 +120,9 @@ func getHostId() (uint64, error) {
 	}
 
 	addrs, err := net.LookupIP(h)
+	if err != nil {
+		return 0, err
+	}
 	a := addrs[0]
 	startPos := len(a) - 4
 	if startPos < 0 {
